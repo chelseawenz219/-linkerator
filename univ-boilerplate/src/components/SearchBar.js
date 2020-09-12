@@ -1,7 +1,7 @@
 //IMPORT REACT
 import React from "react";
 
-//import SEARCH CSS ONCE IT IS MADE
+import "./SearchBar.css";
 
 //SEARCH BAR FUNCTION
 function SearchBar() {
