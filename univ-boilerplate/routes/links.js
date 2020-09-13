@@ -29,12 +29,12 @@ linkRouter.post('/', async (req, res, next)=>{
 linkRouter.patch('/:linkId', async (req, res, next)=>{
     try{
         const { link_url, comment } = req.body;
-        const updatedLink = await updateLink({
+        await updateLink({
             linkId: req.params.linkId,
             link_url: link_url,
             comment: comment
         });
-        res.send(updatedLink);
+        res.send("Updated the Link!");
     }catch (error){
         next(error);
     }
@@ -49,3 +49,5 @@ linkRouter.delete('/:linkId', async (req, res, next)=>{
         next(error);
     }
 });
+
+module.exports = linkRouter;

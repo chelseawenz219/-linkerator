@@ -46,3 +46,5 @@ tagsRouter.delete('/:linkId/:tagId', async (req, res, next)=>{
         next(error);
     }
 });
+
+module.exports =  tagsRouter;
