@@ -11,8 +11,8 @@ function Results() {
     //SET RESULTS HERE
   }, []);
   return (
-    <div>
-      <h1>Results</h1>
+    <div id="resultsDiv">
+      <h1 is="resultsHeading">Results</h1>
       //MAP RESULTS HERE
     </div>
   );
