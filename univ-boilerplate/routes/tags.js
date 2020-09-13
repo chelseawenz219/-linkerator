@@ -21,30 +21,28 @@ tagsRouter.get('/:linkId', async (req, res, next)=>{
     }
 });
 
-tagsRouter.patch('/:linkId/:tagId', async (req, res, next)=>{
+tagsRouter.post('/:tagId/:linkId', async (req, res, next)=>{
     try {
         await addTagLink({
             tagId: req.params.tagId,
             linkId: req.params.linkId
         });
-        const linkWtag = await getLinkById(req.params.linkId);
-        res.send("Added Tag To Link!", linkWtag);
+        res.send("Successful Tag-Link!");
     } catch (error) {
-        next(error);
+        console.error(error);
     }
 });
 
-tagsRouter.delete('/:linkId/:tagId', async (req, res, next)=>{
+tagsRouter.delete('/:tagId/:linkId', async (req, res, next)=>{
     try {
         await removeTagLink({
             tagId: req.params.tagId,
             linkId: req.params.linkId
         });
-        const linkWOtag = await getLinkById(req.params.linkId);
-        res.send("Removed tag from link:", linkWOtag);
+        res.send("Successful Tag-Un-Link!");
     } catch (error) {
         next(error);
     }
 });
 
-module.exports =  tagsRouter;
+module.exports = tagsRouter;

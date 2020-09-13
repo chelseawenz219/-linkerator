@@ -142,7 +142,7 @@ async function getTagsByLink(linkId){
 
     const {rows: tags} = await client.query(`
     SELECT * FROM tags
-    WHERE id= ANY($1);
+    WHERE id=ANY($1);
     `, [getTagIds]);
 
     return tags;
@@ -169,8 +169,7 @@ async function addTagLink({tagId, linkId}){
   try {
     const {rows: [taglink]} = await client.query(`
     INSERT INTO taglinks("tagId", "linkId")
-    VALUES ($1, $2)
-    RETURNING *;
+    VALUES ($1, $2);
     `,[tagId, linkId]);
 
     return taglink;
