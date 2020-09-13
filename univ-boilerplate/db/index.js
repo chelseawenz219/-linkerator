@@ -23,6 +23,17 @@ async function createLink({ link_url, click_count, comment }){
   }
 }
 
+async function getLinkById(linkId){
+  try {
+    const { rows: [link] } = client.query(`
+    SELECT * FROM links
+    WHERE id=$1;
+    `,[linkId]);
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function updateLink({linkId, link_url, comment}){
   try {
     const {rows: [link]} = await client.query(`
@@ -82,6 +93,19 @@ async function createTags(tag_name){
     return tag;
 
   } catch (error) {
+    throw error;
+  }
+}
+
+async function getTags(){
+  try{
+    const { rows } = await client.query(`
+    SELECT * FROM tags;
+    `);
+
+    return rows;
+
+  }catch (error){
     throw error;
   }
 }
@@ -165,9 +189,11 @@ module.exports = {
   getAllLinks,
   deleteLink,
   createTags,
+  getTags,
   deleteTag,
   getTagsByLink,
   removeTagLink,
+  getLinkById,
   addTagLink,
   // db methods
 }
