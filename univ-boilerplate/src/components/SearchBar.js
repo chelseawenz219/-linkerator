@@ -1,71 +1,36 @@
 //IMPORT REACT
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 import "./SearchBar.css";
 
+import {
+    getTags
+} from "../api";
+
 //SEARCH BAR FUNCTION
-function SearchBar() {
+function SearchBubblez() {
+
+    const [tags, setAllTags] = useState([]);
+
+    useEffect(async ()=>{
+        setAllTags(await getTags());
+    });
+
+    console.log(tags);
+    
     return (
         <div className="searchBar">
             <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
-            </div>
-            <div className="checkresults">
-                <input type="checkbox"></input>
-                <span className="checkmark"></span>
+            {/* {
+                tags.map((tag, index) =>{
+                    return <input type="checkbox" key={index} value={tag}>{tag}</input>
+                })
+            } */}
+            
             </div>
         </div>
     );
 }
 
 //EXPORT SEARACH FUNCTION
-export default SearchBar;
+export default SearchBubblez;
